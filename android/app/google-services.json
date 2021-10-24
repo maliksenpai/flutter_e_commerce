@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1005761216610",
+    "firebase_url": "https://kotlinstaj.firebaseio.com",
+    "project_id": "kotlinstaj",
+    "storage_bucket": "kotlinstaj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005761216610:android:1d829bc8e7ce0f5af0113b",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce.flutter_e_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005761216610-nl661c6ea0ssqvf7kd03tt6dh7vfrj3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpla9-hhylfqz8CWQz_DOf4Ps9hZCeZmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005761216610-nl661c6ea0ssqvf7kd03tt6dh7vfrj3d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
