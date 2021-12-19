@@ -1,59 +1,59 @@
 # flutter_e_commerce
 
-Uygulamanın asıl amacı e-ticaret ürünlerinin girebileceği, listelenebileceği, sıralanabilmesidir. Uygulama içerisinde eşyanın ismini, açıklamasını, fiyatını ve kategorisini seçip onu veri tabanına kaydediyoruz. Uyguluma flutter ile yapılmıştır ve back-end için firebase kullanılmıştır. Firebase realtime database kullanılmıştır veri tabanı için. 
+The main purpose of the application is to enter, list and sort e-commerce products. In the application, we select the name, description, price and category of the item and save it to the database. The application is made with flutter and firebase is used for the back-end. Firebase realtime database is used for database.
 
 
-<h2> Flutter Kullanımı </h2>
+<h2> Using Flutter </h2>
 
 <h3> Architecture Design Pattern </h3>
 <p>
-  Flutter için state yönetimi ve ana işlemlerin yönetilmesi için Getx kütüphanesi kullanılmıştır. Bu kütüphane içerisinde yönetim view-controller-service şeklinde ilerlemektedir. Basitçe işlemler şu şekildedir:
+  Getx library is used to manage state and main processes for Flutter. In this library, management proceeds in the form of view-controller-service. Simply the operations are as follows:
   
   <ul>
-    <li> Kullanıcı UI üzerinden yapmak istediğine karar verir ve istediği yere tıklar ve işlemler gerçekleşir</li>
-    <li> Kullanıcının yaptığı işlem controller kısmına gider ve mantık işlemleri yapılır ve bu mantık işlemler içerisinde veri gerekiyor ise service yardımıyla veriyi alır</li>
-    <li> Service tarafında veriler database sorgularıyla veya api işlemleri ile yapılır. Bu verileri controller kısmına gönderir</li>
-    <li> Controller serviceden gelen verilere göre tekrar mantık işlemlerini yapar ve verilerini günceller</li>
-    <li> Controller tarafından değişen verileri göre View UI güncellenir</li>
-  </ul> 
+    <li> The user decides what he wants to do on the UI and clicks wherever he wants and the actions are taken</li>
+    <li> The user's action goes to the controller section and the logic operations are performed, and if data is required in this logic operation, it receives the data with the help of the service</li>
+    On the <li> Service side, the data is made with database queries or api operations. Sends this data to the controller</li>
+    <li> It performs logic operations and updates its data again according to the data from the Controller service</li>
+    <li> The View UI is updated according to the data changed by the Controller</li>
+  </ul>
 </p>
 
-<h3> Dosya Yapısı </h3>
+<h3> File Structure </h3>
  
-  - /app  
+  - /app
     - /get
-          </br> #Controllerların tanımlandığını ve hazırlandığı class
+          </br> #Class where controllers are defined and prepared
         - initial_bindings.dart
-          </br> #Eşyaların listelenmesini, eklenmesini, güncellenmesini ve silinmesini kontrol eden controller
+          </br> #Controller that controls listing, adding, updating and deleting items
         - shop_get.dart
     - /service
-        </br> #Bu servis yardımı ile firebase işlemlerini yapabiliyoruz.
+        </br> #With the help of this service, we can perform firebase operations.
       - firebase_service.dart
     - /model
-        </br> #Listelenen ve kullanılan eşyaların tutulduğu model yapısı.
+        </br> #Model structure in which listed and used items are kept.
       - shop_item.dart
-        </br> #Eşyaların kategorisini tutmak için kullanılan Enum
+        </br> #Enum used to keep category of items
       - shop_item_category.dart
     - /view
-        </br> #Eşyaların listelendiği, filtrelenebildiği veya sıralanabildiği ve eşyaların eklendiği ana sayfa
+        </br> #Home page where items can be listed, filtered or sorted and items added
       - main_screen.dart
-        </br> #Ana sayfa içerisinde tıklanılan eşyanın detay sayfası, burada eşya bilgileri detaylı bir şekilde görülebilir ve eşya düzenlenebilir ve silinebilir
+        </br> #Detail page of the item clicked on the main page, here the item information can be seen in detail and the item can be edited and deleted
       - shop_item_detail.dart
-      </br> #Farklı yerlerde kullanılabilecek widgetlerin tekrar kullanılabilir bir şekilde listelendiği dizin
+      </br> #Directory where widgets that can be used in different places are listed in a reusable way
   - /widget
-        </br> #Eşyalar hakkında yapılan dialog veya bottom sheet işlemlerinin tekrar kullanılabilir bir şekilde veren class
+        </br> #Class that gives reusable dialog or bottom sheet operations about items
       - main_screen_dialogs.dart
-    </br> #Uygulamanın açılmasını ve genel ayarların yapıldığı class
-- main.dart 
-  
+    </br> #Class to open the application and make general settings
+- main.dart
 
-<h3> Design Patternler </h3>
+
+<h3> Design Patterns </h3>
 
   <ul>
-  <li> <b> Singleton:</b> Uygulama içerisindeki service ve controllerlar singleton bir yapıda kullanılmıştır. Bir objenin üretildiği ve diğer yerlerde bu objeler çağrılırken dependency injection yapılarak çağrılıp kullanılmıştır. Örnek olarak ShopController ilk başta üretilmiştir ve farklı yerlerde dependency injection yapılarak tekrar aynı obje alınmış ve kullanılmıştır. </li>
+  <li> <b> Singleton:</b> The services and controllers in the application are used in a singleton structure. It is invoked and used by dependency injection while calling these objects in other places where an object is produced. For example, the ShopController was produced at first, and the same object was taken and used again by dependency injection in different places. </li>
   </ul>
   
-<h3> Uygulama FlowChartı </h3>
+<h3> Application FlowChart </h3>
 
   <img src = "https://github.com/maliksenpai/flutter_e_commerce/blob/master/github_images/flowchart.png?raw=true"/>
 
@@ -61,11 +61,11 @@ Uygulamanın asıl amacı e-ticaret ürünlerinin girebileceği, listelenebilece
   <h2> Firebase </h2>
   
   <p>
-    Uygulamanın veritabanı için Firebase Realtime Database kullanışmıştır. Bu veri tabanı web socket'e benzer mantıkta çalışır ve veriler canlı olarak güncellenir. Veriler NoSql bir yapıda yani düz json şeklinde saklanır, bu yüzden bir tablo düzeni yoktur.
+    Firebase Realtime Database is used for the database of the application. This database works like a web socket and the data is updated live. The data is stored in a NoSql structure, ie plain json, so there is no table layout.
   <br>
-    Uygulama içerisinde yapılan işlemler çevrimdışı durumlar için de saklanır  ve query mantığı ile eğer işlem anında bağlantı yoksa o işlem bekletilir ve bağlantı geldiğinde işlemler yapılmaya devam edilir. Bu özellikle otomatik olarak çalıştığı için ise geliştiricinin yükünü azaltır.
+    Transactions made in the application are also stored for offline situations, and with the query logic, if there is no connection at the time of the transaction, that transaction is suspended and operations are continued when the connection is received. This reduces the burden on the developer, especially since it works automatically.
   <br>
-    Uygulama içerisinde kullanılan veritabanı düzeni şu şekildedir:
+    The database layout used in the application is as follows:
       
     - items
          - id
